@@ -1,4 +1,5 @@
 ﻿@page "/weather"
+@using BlazorDynamicForm.Attributes.Panel
 @inject HttpClient Http
 
 <PageTitle>Weather</PageTitle>
@@ -37,7 +38,7 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private WeatherForecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,11 +47,17 @@ else
 
     public class WeatherForecast
     {
+        [DynamicPanel("Date")]
+        [DynamicForm(InputType.Date)]
         public DateOnly Date { get; set; }
 
+        [DynamicPanel("Temp C")]
+        [DynamicForm(InputType.Number)]
         public int TemperatureC { get; set; }
 
-        public string? Summary { get; set; }
+        [DynamicPanel("Summary")]
+        [DynamicForm(InputType.Text)]
+        public string Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }

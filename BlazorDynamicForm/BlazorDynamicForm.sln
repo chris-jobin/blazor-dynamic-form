@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDynamicFormApp", "BlazorDynamicFormApp\BlazorDynamicFormApp.csproj", "{4C0F8A1A-C0C8-466E-8393-8D845A95B512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDynamicForm", "BlazorDynamicForm\BlazorDynamicForm.csproj", "{62DE79ED-8A62-4D29-8D51-9632E4718A30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4C0F8A1A-C0C8-466E-8393-8D845A95B512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C0F8A1A-C0C8-466E-8393-8D845A95B512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C0F8A1A-C0C8-466E-8393-8D845A95B512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DE79ED-8A62-4D29-8D51-9632E4718A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DE79ED-8A62-4D29-8D51-9632E4718A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DE79ED-8A62-4D29-8D51-9632E4718A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DE79ED-8A62-4D29-8D51-9632E4718A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

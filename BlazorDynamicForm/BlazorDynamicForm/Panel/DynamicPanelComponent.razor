@@ -1,0 +1,38 @@
+﻿@using BlazorDynamicForm.Attributes.Panel
+@using System.Reflection
+@typeparam TModel
+
+@foreach (var column in Columns.Values)
+{
+    @foreach (var property in column)
+    {
+        <div>
+            <label style="font-weight:bold;">@GetLabel(property)</label>
+            <DynamicPanelControl Model="Model" Property="property" />
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public TModel Model { get; set; }
+
+    private Dictionary<int, List<PropertyInfo>> Columns;
+
+    protected override void OnInitialized()
+    {
+        Columns = Model
+            .GetType()
+            .GetProperties()
+            .Where(x => Attribute.IsDefined(x, typeof(DynamicPanelAttribute)))
+            .OrderBy(x => x.GetCustomAttribute<DynamicPanelAttribute>().Index)
+            .GroupBy(x => x.GetCustomAttribute<DynamicPanelAttribute>().ColumnIndex)
+            .ToDictionary(x => x.Key, y => y.ToList());
+    }
+
+    private string GetLabel(PropertyInfo property)
+    {
+        var attribute = property.GetCustomAttribute<DynamicPanelAttribute>();
+        return attribute?.Name ?? property.Name;
+    }
+}
