@@ -2,16 +2,22 @@
 @using System.Reflection
 @typeparam TModel
 
-@foreach (var column in Columns.Values)
-{
-    @foreach (var property in column)
+<ContainerComponent>
+    @foreach (var column in Columns.Values)
     {
-        <div>
-            <label style="font-weight:bold;">@GetLabel(property)</label>
-            <DynamicPanelControl Model="Model" Property="property" />
-        </div>
+        @foreach (var property in column)
+        {
+            <DynamicDisplayTemplate TitleWidth="@GetTitleWidth(property)">
+                <Title>
+                    <label style="font-weight:bold;">@GetLabel(property)</label>
+                </Title>
+                <Control>
+                    <DynamicPanelControl Model="Model" Property="property" />
+                </Control>
+            </DynamicDisplayTemplate>
+        }
     }
-}
+</ContainerComponent>
 
 @code {
     [Parameter]
@@ -21,13 +27,25 @@
 
     protected override void OnInitialized()
     {
-        Columns = Model
+        Columns = GetColumns();
+
+    }
+
+    private Dictionary<int, List<PropertyInfo>> GetColumns()
+    {
+        return Model
             .GetType()
             .GetProperties()
             .Where(x => Attribute.IsDefined(x, typeof(DynamicPanelAttribute)))
             .OrderBy(x => x.GetCustomAttribute<DynamicPanelAttribute>().Index)
             .GroupBy(x => x.GetCustomAttribute<DynamicPanelAttribute>().ColumnIndex)
             .ToDictionary(x => x.Key, y => y.ToList());
+    }
+
+    private int GetTitleWidth(PropertyInfo property)
+    {
+        var attribute = property.GetCustomAttribute<DynamicPanelAttribute>();
+        return attribute?.Width ?? 0;
     }
 
     private string GetLabel(PropertyInfo property)

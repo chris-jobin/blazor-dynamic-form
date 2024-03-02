@@ -8,8 +8,17 @@
 
 Welcome to your new app.
 
-<DynamicPanelComponent Model="Model" />
+<div class="row">
+    <div class="col-6">
+        <DynamicPanelComponent Model="Model" />
+    </div>
+</div>
 
 @code {
-    private WeatherForecast Model = new WeatherForecast();
+    private WeatherForecast Model = new WeatherForecast
+    {
+        TemperatureC = 32,
+        Date = DateOnly.FromDateTime(DateTime.Today),
+        Summary = "Quite hot"
+    };
 }

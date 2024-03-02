@@ -1,0 +1,11 @@
+﻿
+<div class="dynamic-container dynamic-container-border">
+    <div class="dynamic-container-content">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}
