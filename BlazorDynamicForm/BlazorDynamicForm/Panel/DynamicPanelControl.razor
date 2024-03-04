@@ -2,21 +2,3 @@
 @typeparam TModel
 
 <div>@GetValue()</div>
-
-@code {
-    [Parameter]
-    public TModel Model { get; set; }
-    [Parameter]
-    public PropertyInfo Property { get; set; }
-
-    private string GetValue()
-    {
-        var value = Property.GetValue(Model, null);
-
-        return value switch
-        {
-            var v when v is DateTime val => val.ToString("d MMMM yyyy"),
-            _ => value?.ToString()
-        };
-    }
-}
