@@ -1,0 +1,22 @@
+﻿@page "/"
+@using BlazorDynamicComponents.Panel
+@using BlazorDynamicForm.Shared
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<DynamicPanelComponent Model="Model" />
+
+@code {
+    private WeatherForecast Model = new WeatherForecast
+    {
+        Date = DateTime.Today,
+        TemperatureC = 25,
+        Summary = "Nice"
+    };
+}

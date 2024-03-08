@@ -1,0 +1,20 @@
+﻿@using BlazorDynamicComponents.Attributes.Panel
+@using System.Reflection
+@typeparam TModel
+
+<ContainerComponent>
+    @foreach (var column in Columns.Values)
+    {
+        @foreach (var property in column)
+        {
+            <DynamicDisplayTemplate TitleWidth="@GetTitleWidth(property)">
+                <Title>
+                    <label style="font-weight:bold;">@GetLabel(property)</label>
+                </Title>
+                <Control>
+                    <DynamicPanelControl Model="Model" Property="property" />
+                </Control>
+            </DynamicDisplayTemplate>
+        }
+    }
+</ContainerComponent>
