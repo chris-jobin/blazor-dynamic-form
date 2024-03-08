@@ -47,17 +47,5 @@ namespace BlazorDynamicComponents.Panel
 
             return columnTitle;
         }
-
-        private int GetLabelWidth(PropertyInfo property)
-        {
-            var attribute = property.GetCustomAttribute<DynamicPanelAttribute>();
-            return attribute?.Width ?? 0;
-        }
-
-        private string GetLabel(PropertyInfo property)
-        {
-            var attribute = property.GetCustomAttribute<DynamicPanelAttribute>();
-            return attribute?.Name ?? property.Name;
-        }
     }
 }

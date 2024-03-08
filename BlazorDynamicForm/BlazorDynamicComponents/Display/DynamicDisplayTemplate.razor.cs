@@ -10,9 +10,9 @@ namespace BlazorDynamicComponents.Display
     public partial class DynamicDisplayTemplate
     {
         [Parameter]
-        public RenderFragment ChildContent { get; set; }
+        public RenderFragment Columns { get; set; }
 
         [Parameter]
-        public string Title { get; set; }
+        public RenderFragment Rows { get; set; }
     }
 }

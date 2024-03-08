@@ -4,24 +4,31 @@
 @typeparam TModel
 
 <ContainerComponent Header="@Header">
-    <div style="display:flex;">
-        @foreach (var column in Columns)
-        {
-            <div style="flex:1;">
-                <DynamicDisplayTemplate Title="@GetColumnTitle(column.Key)">
-                    @foreach (var property in column.Value)
-                    {
-                        <DynamicDisplayTemplateRow LabelWidth="@GetLabelWidth(property)">
-                            <Label>
-                                <label style="font-weight:bold;">@GetLabel(property)</label>
-                            </Label>
-                            <Control>
-                                <DynamicPanelControl Model="Model" Property="property" />
-                            </Control>
-                        </DynamicDisplayTemplateRow>
-                    }
-                </DynamicDisplayTemplate>
-            </div>
-        }
-    </div>
+    @if (Columns.Count > 1)
+    {
+        <DynamicDisplayTemplate>
+            <Columns>
+                @foreach (var column in Columns)
+                {
+                    <DynamicDisplayTemplateColumn Title="@GetColumnTitle(column.Key)">
+                        @foreach (var property in column.Value)
+                        {
+                            <DynamicPanelRow Model="Model" Property="property" />
+                        }
+                    </DynamicDisplayTemplateColumn>
+                }
+            </Columns>
+        </DynamicDisplayTemplate>
+    }
+    else
+    {
+        <DynamicDisplayTemplate>
+            <Rows>
+                @foreach (var property in Columns.First().Value)
+                {
+                    <DynamicPanelRow Model="Model" Property="property" />
+                }
+            </Rows>
+        </DynamicDisplayTemplate>
+    }
 </ContainerComponent>

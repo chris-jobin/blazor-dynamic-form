@@ -1,0 +1,13 @@
+﻿@using BlazorDynamicComponents.Attributes.Panel
+@using BlazorDynamicComponents.Display
+@using System.Reflection
+@typeparam TModel
+
+<DynamicDisplayTemplateRow LabelWidth="@GetLabelWidth()">
+    <Label>
+        <label style="font-weight:bold;">@GetLabel()</label>
+    </Label>
+    <Control>
+        <DynamicPanelControl Model="Model" Property="Property" />
+    </Control>
+</DynamicDisplayTemplateRow>

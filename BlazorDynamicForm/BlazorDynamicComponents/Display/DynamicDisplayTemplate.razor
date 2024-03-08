@@ -1,6 +1,11 @@
 ﻿
-@if (!string.IsNullOrEmpty(Title))
+@if (Columns != null)
 {
-    <div class="dynamic-display-template-title">@Title</div>
+    <div style="display:flex;">
+        @Columns
+    </div>
 }
-@ChildContent
+else
+{
+    @Rows
+}
