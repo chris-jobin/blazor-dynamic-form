@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorDynamicComponents
+namespace BlazorDynamicComponents.Panel
 {
-    public partial class ContainerComponent
+    public partial class DynamicPanelSourcedComponent<TModel>
     {
-        [Parameter]
-        public RenderFragment ChildContent { get; set; }
-
         [Parameter]
         public string Header { get; set; }
     }

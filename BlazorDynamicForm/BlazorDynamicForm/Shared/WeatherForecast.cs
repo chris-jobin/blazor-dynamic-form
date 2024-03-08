@@ -1,19 +1,26 @@
 using BlazorDynamicComponents.Attributes.Panel;
+using BlazorDynamicComponents.Patterns;
 
 namespace BlazorDynamicForm.Shared
 {
-    public class WeatherForecast
+    public class WeatherForecast : IDynamicModel
     {
-        [DynamicPanel("Date")]
+        [DynamicPanel("Date", ColumnIndex = 1)]
         public DateTime Date { get; set; }
 
-        [DynamicPanel("Temp. C")]
+        [DynamicPanel("Summary", ColumnIndex = 1)]
+        public string Summary { get; set; }
+
+        [DynamicPanel("Temp. C", ColumnIndex = 2)]
         public int TemperatureC { get; set; }
 
-        [DynamicPanel("Temp. F")]
+        [DynamicPanel("Temp. F", ColumnIndex = 2)]
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
-        [DynamicPanel("Summary")]
-        public string Summary { get; set; }
+        public Dictionary<int, string> Columns { get; set; } = new()
+        {
+            { 1, "Info" },
+            { 2, "Temp." }
+        };
     }
 }

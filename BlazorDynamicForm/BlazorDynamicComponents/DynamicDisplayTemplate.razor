@@ -1,12 +1,8 @@
 ﻿
-<div style="display:flex; margin:0.3rem;">
-    @if (TitleWidth > 0)
-    {
-        <div style="flex:1;">
-            @Title
-        </div>
-    }
-    <div style="flex:1;">
-        @Control
-    </div>
+@if (!string.IsNullOrEmpty(Title))
+{
+    <div class="dynamic-display-template-title">@Title</div>
+}
+<div style="display:flex;">
+    @ChildContent
 </div>

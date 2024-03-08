@@ -1,4 +1,5 @@
 ﻿using BlazorDynamicComponents.Attributes.Panel;
+using BlazorDynamicComponents.Patterns;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace BlazorDynamicComponents.Panel
     {
         [Parameter]
         public TModel Model { get; set; }
+
+        [Parameter]
+        public string Header { get; set; }
 
         private Dictionary<int, List<PropertyInfo>> Columns;
 
@@ -32,7 +36,19 @@ namespace BlazorDynamicComponents.Panel
                 .ToDictionary(x => x.Key, y => y.ToList());
         }
 
-        private int GetTitleWidth(PropertyInfo property)
+        private string GetColumnTitle(int columnIndex)
+        {
+            if (Model is not IDynamicModel dynamicModel || dynamicModel.Columns == null)
+            {
+                return string.Empty;
+            }
+
+            var columnTitle = dynamicModel.Columns.TryGetValue(columnIndex, out var result) ? result : string.Empty;
+
+            return columnTitle;
+        }
+
+        private int GetLabelWidth(PropertyInfo property)
         {
             var attribute = property.GetCustomAttribute<DynamicPanelAttribute>();
             return attribute?.Width ?? 0;

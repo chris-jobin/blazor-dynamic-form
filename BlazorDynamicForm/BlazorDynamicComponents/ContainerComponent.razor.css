@@ -15,3 +15,10 @@
 .dynamic-container-content {
     padding: 0.8rem;
 }
+
+.dynamic-container-header {
+    padding: 1rem;
+    font-weight: bold;
+    color: #5d6975;
+    font-size: larger;
+}

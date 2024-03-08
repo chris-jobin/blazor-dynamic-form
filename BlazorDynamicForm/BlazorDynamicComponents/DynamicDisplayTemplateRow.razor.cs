@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace BlazorDynamicComponents
 {
-    public partial class DynamicDisplayTemplate
+    public partial class DynamicDisplayTemplateRow
     {
         [Parameter]
-        public RenderFragment ChildContent { get; set; }
-
+        public RenderFragment Label { get; set; }
         [Parameter]
-        public string Title { get; set; }
+        public RenderFragment Control { get; set; }
+        [Parameter]
+        public int LabelWidth { get; set; } = 4;
     }
 }

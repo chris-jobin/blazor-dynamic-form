@@ -1,5 +1,9 @@
 ﻿
 <div class="dynamic-container dynamic-container-border">
+    @if (!string.IsNullOrEmpty(Header))
+    {
+        <div class="dynamic-container-header">@Header</div>
+    }
     <div class="dynamic-container-content">
         @ChildContent
     </div>

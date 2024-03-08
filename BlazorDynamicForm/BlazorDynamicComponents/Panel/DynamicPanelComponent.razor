@@ -2,19 +2,25 @@
 @using System.Reflection
 @typeparam TModel
 
-<ContainerComponent>
-    @foreach (var column in Columns.Values)
-    {
-        @foreach (var property in column)
+<ContainerComponent Header="@Header">
+    <div style="display:flex;">
+        @foreach (var column in Columns)
         {
-            <DynamicDisplayTemplate TitleWidth="@GetTitleWidth(property)">
-                <Title>
-                    <label style="font-weight:bold;">@GetLabel(property)</label>
-                </Title>
-                <Control>
-                    <DynamicPanelControl Model="Model" Property="property" />
-                </Control>
-            </DynamicDisplayTemplate>
+            <div style="flex:1;">
+                <DynamicDisplayTemplate Title="@GetColumnTitle(column.Key)">
+                    @foreach (var property in column.Value)
+                    {
+                        <DynamicDisplayTemplateRow LabelWidth="@GetLabelWidth(property)">
+                            <Label>
+                                <label style="font-weight:bold;">@GetLabel(property)</label>
+                            </Label>
+                            <Control>
+                                <DynamicPanelControl Model="Model" Property="property" />
+                            </Control>
+                        </DynamicDisplayTemplateRow>
+                    }
+                </DynamicDisplayTemplate>
+            </div>
         }
-    }
+    </div>
 </ContainerComponent>

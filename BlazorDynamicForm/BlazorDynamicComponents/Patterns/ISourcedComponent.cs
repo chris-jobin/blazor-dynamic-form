@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorDynamicComponents.Sourced
+namespace BlazorDynamicComponents.Patterns
 {
     public interface ISourcedComponent<TModel>
     {
