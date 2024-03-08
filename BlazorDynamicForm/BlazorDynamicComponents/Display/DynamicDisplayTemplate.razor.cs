@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorDynamicComponents
+namespace BlazorDynamicComponents.Display
 {
     public partial class DynamicDisplayTemplate
     {
