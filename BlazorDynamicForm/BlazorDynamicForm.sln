@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDynamicForm.Server", "BlazorDynamicForm\Server\BlazorDynamicForm.Server.csproj", "{C13C39F8-C716-4389-B6A8-A7D021BD2210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDynamicForm.Server", "BlazorDynamicForm\Server\BlazorDynamicForm.Server.csproj", "{C13C39F8-C716-4389-B6A8-A7D021BD2210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDynamicForm.Client", "BlazorDynamicForm\Client\BlazorDynamicForm.Client.csproj", "{7A9E0157-41EB-4252-AC11-F2C30B9FD1FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDynamicForm.Client", "BlazorDynamicForm\Client\BlazorDynamicForm.Client.csproj", "{7A9E0157-41EB-4252-AC11-F2C30B9FD1FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDynamicForm.Shared", "BlazorDynamicForm\Shared\BlazorDynamicForm.Shared.csproj", "{596E8830-6242-4BEC-A8B0-9F3A8D0B0BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDynamicForm.Shared", "BlazorDynamicForm\Shared\BlazorDynamicForm.Shared.csproj", "{596E8830-6242-4BEC-A8B0-9F3A8D0B0BEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDynamicComponents", "BlazorDynamicComponents\BlazorDynamicComponents.csproj", "{3F109E92-7B5C-4AB0-8FE0-78F3FBF1B178}"
 EndProject

@@ -8,15 +8,8 @@
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-<DynamicPanelComponent Model="Model" />
-
-@code {
-    private WeatherForecast Model = new WeatherForecast
-    {
-        Date = DateTime.Today,
-        TemperatureC = 25,
-        Summary = "Nice"
-    };
-}
+<div class="row py-2">
+    <div class="col-6">
+        <DynamicPanelSourcedComponent TModel="WeatherForecast" GetLocation="WeatherForecast/GetWeather" />
+    </div>
+</div>

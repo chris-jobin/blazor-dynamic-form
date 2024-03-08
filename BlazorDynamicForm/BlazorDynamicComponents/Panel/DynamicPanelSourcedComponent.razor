@@ -1,0 +1,7 @@
+﻿@using BlazorDynamicComponents.Sourced
+@typeparam TModel
+@inherits SourcedComponent<TModel>
+
+<SourcedContent TModel="TModel" Source="this">
+    <DynamicPanelComponent Model="Model" />
+</SourcedContent>
