@@ -5,6 +5,8 @@ namespace BlazorDynamicForm.Shared
 {
     public class WeatherForecast : IDynamicModel
     {
+        public string Id { get; set; }
+
         [DynamicPanel("Date", ColumnIndex = 1)]
         public DateTime Date { get; set; }
 

@@ -8,6 +8,7 @@ namespace BlazorDynamicComponents.Patterns
 {
     public interface IDynamicModel
     {
+        string Id { get; set; }
         Dictionary<int, string> Columns { get; set; }
     }
 }

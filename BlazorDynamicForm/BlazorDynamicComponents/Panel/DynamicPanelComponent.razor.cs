@@ -18,6 +18,8 @@ namespace BlazorDynamicComponents.Panel
         [Parameter]
         public string Header { get; set; }
 
+        private bool HasContent => !string.IsNullOrEmpty(GetModelId());
+
         private Dictionary<int, List<PropertyInfo>> Columns;
 
         protected override void OnInitialized()
@@ -46,6 +48,16 @@ namespace BlazorDynamicComponents.Panel
             var columnTitle = dynamicModel.Columns.TryGetValue(columnIndex, out var result) ? result : string.Empty;
 
             return columnTitle;
+        }
+
+        private string GetModelId()
+        {
+            if (Model is not IDynamicModel dynamicModel)
+            {
+                return string.Empty;
+            }
+
+            return dynamicModel.Id;
         }
     }
 }

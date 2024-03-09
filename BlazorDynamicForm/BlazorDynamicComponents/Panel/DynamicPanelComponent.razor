@@ -4,31 +4,47 @@
 @typeparam TModel
 
 <ContainerComponent Header="@Header">
-    @if (Columns.Count > 1)
+    @if (HasContent)
     {
-        <DynamicDisplayTemplate>
-            <Columns>
-                @foreach (var column in Columns)
-                {
-                    <DynamicDisplayTemplateColumn Title="@GetColumnTitle(column.Key)">
-                        @foreach (var property in column.Value)
-                        {
-                            <DynamicPanelRow Model="Model" Property="property" />
-                        }
-                    </DynamicDisplayTemplateColumn>
-                }
-            </Columns>
-        </DynamicDisplayTemplate>
+        @if (Columns.Count > 1)
+        {
+            <DynamicDisplayTemplate>
+                <Columns>
+                    @foreach (var column in Columns)
+                    {
+                        <DynamicDisplayTemplateColumn Title="@GetColumnTitle(column.Key)">
+                            @foreach (var property in column.Value)
+                            {
+                                <DynamicPanelRow Model="Model" Property="property" />
+                            }
+                        </DynamicDisplayTemplateColumn>
+                    }
+                </Columns>
+            </DynamicDisplayTemplate>
+        }
+        else
+        {
+            <DynamicDisplayTemplate>
+                <Rows>
+                    @foreach (var property in Columns.First().Value)
+                    {
+                        <DynamicPanelRow Model="Model" Property="property" />
+                    }
+                </Rows>
+            </DynamicDisplayTemplate>
+        }
     }
     else
     {
-        <DynamicDisplayTemplate>
-            <Rows>
-                @foreach (var property in Columns.First().Value)
-                {
-                    <DynamicPanelRow Model="Model" Property="property" />
-                }
-            </Rows>
-        </DynamicDisplayTemplate>
+        <div style="font-style:italic;">
+            No content.
+        </div>
     }
+    <div style="display:flex; justify-content:end;">
+        <button class="btn btn-primary btn-sm" style="margin:0.3rem;">Edit</button>
+        @if (HasContent)
+        {
+            <button class="btn btn-danger btn-sm" style="margin:0.3rem;">Delete</button>
+        }
+    </div>
 </ContainerComponent>
