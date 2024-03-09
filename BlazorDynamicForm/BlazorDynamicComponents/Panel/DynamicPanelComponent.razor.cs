@@ -18,6 +18,12 @@ namespace BlazorDynamicComponents.Panel
         [Parameter]
         public string Header { get; set; }
 
+        [Parameter]
+        public EventCallback OnEdit { get; set; }
+
+        [Parameter]
+        public EventCallback OnDelete { get; set; }
+
         private bool HasContent => !string.IsNullOrEmpty(GetModelId());
 
         private Dictionary<int, List<PropertyInfo>> Columns;
