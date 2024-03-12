@@ -1,1 +1,30 @@
-﻿<h3>DynamicForm</h3>
+﻿@using BlazorDynamicComponents.Display
+@typeparam TModel
+
+@if (Columns.Count > 1)
+{
+    <DynamicDisplayTemplate>
+        <Columns>
+            @foreach (var column in Columns)
+            {
+                <DynamicDisplayTemplateColumn Title="@GetColumnTitle(column.Key)">
+                    @foreach (var property in column.Value)
+                    {
+                        <DynamicFormRow Model="Model" Property="property" />
+                    }
+                </DynamicDisplayTemplateColumn>
+            }
+        </Columns>
+    </DynamicDisplayTemplate>
+}
+else if (Columns.Count == 1)
+{
+    <DynamicDisplayTemplate>
+        <Rows>
+            @foreach (var property in Columns.First().Value)
+            {
+                <DynamicFormRow Model="Model" Property="property" />
+            }
+        </Rows>
+    </DynamicDisplayTemplate>
+}

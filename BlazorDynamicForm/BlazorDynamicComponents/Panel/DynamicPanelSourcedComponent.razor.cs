@@ -11,5 +11,11 @@ namespace BlazorDynamicComponents.Panel
     {
         [Parameter]
         public string Header { get; set; }
+
+        [Parameter]
+        public EventCallback OnEdit { get; set; }
+
+        [Parameter]
+        public EventCallback OnDelete { get; set; }
     }
 }

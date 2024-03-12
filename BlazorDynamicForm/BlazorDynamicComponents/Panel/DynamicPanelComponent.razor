@@ -22,7 +22,7 @@
                 </Columns>
             </DynamicDisplayTemplate>
         }
-        else
+        else if (Columns.Count == 1)
         {
             <DynamicDisplayTemplate>
                 <Rows>
@@ -41,10 +41,10 @@
         </div>
     }
     <div style="display:flex; justify-content:end;">
-        <button class="btn btn-primary btn-sm" style="margin:0.3rem;">Edit</button>
+        <button class="btn btn-primary btn-sm" style="margin:0.3rem;" @onclick="OnEdit">Edit</button>
         @if (HasContent)
         {
-            <button class="btn btn-danger btn-sm" style="margin:0.3rem;">Delete</button>
+            <button class="btn btn-danger btn-sm" style="margin:0.3rem;" @onclick="OnDelete">Delete</button>
         }
     </div>
 </ContainerComponent>

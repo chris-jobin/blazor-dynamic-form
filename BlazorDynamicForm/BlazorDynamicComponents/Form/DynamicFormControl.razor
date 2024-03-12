@@ -1,1 +1,30 @@
-﻿<h3>DynamicFormControl</h3>
+﻿@using Attributes.Panel
+
+@if (InputType != InputType.None)
+{
+    @switch (InputType)
+    {
+        case InputType.Date:
+            <input type="date" class="form-control" disabled="@Readonly" value="@GetValue()" />
+            break;
+
+        case InputType.DateTime:
+            <input type="datetime" class="form-control" disabled="@Readonly" value="@GetValue()" />
+            break;
+
+        case InputType.Text:
+            <input type="text" class="form-control" disabled="@Readonly" value="@GetValue()" />
+            break;
+
+        case InputType.TextArea:
+            <textarea class="form-control" disabled="@Readonly" value="@GetValue()" />
+            break;
+
+        case InputType.Number:
+            <input type="number" class="form-control" disabled="@Readonly" value="@GetValue()" />
+            break;
+
+        case InputType.Select:
+            break;
+    }
+}

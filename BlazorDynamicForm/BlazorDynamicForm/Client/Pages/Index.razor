@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorDynamicComponents.Form
 @using BlazorDynamicComponents.Modals
 @using BlazorDynamicComponents.Panel
 @using BlazorDynamicForm.Shared
@@ -11,6 +12,18 @@ Welcome to your new app.
 
 <div class="row py-2">
     <div class="col-6">
-        <DynamicPanelSourcedComponent TModel="WeatherForecast" Header="Weather Forecast" GetLocation="WeatherForecast/GetWeather" />
+        <DynamicPanelSourcedComponent TModel="WeatherForecast" Header="Weather Forecast" GetLocation="WeatherForecast/GetWeather" OnEdit="Edit" />
+        <Modal @ref="ModalRef" Header="Weather Forecast">
+            <DynamicFormSourcedComponent TModel="WeatherForecast" GetLocation="WeatherForecast/GetWeather" />
+        </Modal>
     </div>
 </div>
+
+@code {
+    private Modal ModalRef;
+
+    private async Task Edit()
+    {
+        await ModalRef.Open();
+    }
+}

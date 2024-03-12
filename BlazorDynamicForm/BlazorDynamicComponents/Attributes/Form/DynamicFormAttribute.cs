@@ -9,6 +9,7 @@ namespace BlazorDynamicComponents.Attributes.Panel
     public class DynamicFormAttribute : DynamicDisplayAttribute
     {
         public InputType InputType { get; set; }
+        public bool Readonly { get; set; }
 
         public DynamicFormAttribute(string name, InputType inputType)
         {
@@ -24,6 +25,7 @@ namespace BlazorDynamicComponents.Attributes.Panel
 
     public enum InputType
     {
+        None,
         Date,
         DateTime,
         Text,
