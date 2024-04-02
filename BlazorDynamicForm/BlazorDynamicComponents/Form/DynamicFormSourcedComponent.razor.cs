@@ -9,6 +9,11 @@ namespace BlazorDynamicComponents.Form
 {
     public partial class DynamicFormSourcedComponent<TModel>
     {
+        private DynamicFormComponent<TModel> FormRef;
 
+        public bool Validate()
+        {
+            return FormRef.Validate();
+        }
     }
 }

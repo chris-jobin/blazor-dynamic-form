@@ -3,5 +3,5 @@
 @inherits SourcedComponent<TModel>
 
 <SourcedContent TModel="TModel" Source="this">
-    <DynamicFormComponent Model="Model" />
+    <DynamicFormComponent @ref="FormRef" Model="Model" />
 </SourcedContent>

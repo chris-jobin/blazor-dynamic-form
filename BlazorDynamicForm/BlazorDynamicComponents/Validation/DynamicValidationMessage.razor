@@ -1,0 +1,10 @@
+﻿@using System.Linq.Expressions
+@using System.Reflection
+
+@if (Item != null)
+{
+    @foreach (var error in Item.ErrorMessages)
+    {
+        <small style="color:red;">@error</small>
+    }
+}

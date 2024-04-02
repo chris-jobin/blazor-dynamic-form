@@ -1,4 +1,5 @@
 ﻿using BlazorDynamicComponents.Attributes.Panel;
+using BlazorDynamicComponents.Validation;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace BlazorDynamicComponents.Form
         [Parameter]
         public PropertyInfo Property { get; set; }
 
+        [Parameter]
+        public DynamicValidationContext Context { get; set; }
+
         private InputType InputType;
         private bool Readonly;
 
@@ -31,6 +35,12 @@ namespace BlazorDynamicComponents.Form
         private object GetValue()
         {
             return Property.GetValue(Model, null);
+        }
+
+        private void SetValue(object value)
+        {
+            Property.SetValue(Model, value);
+            _ = Context.ValidateProperty(Property);
         }
     }
 }

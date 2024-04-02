@@ -10,7 +10,7 @@
                 <DynamicDisplayTemplateColumn Title="@GetColumnTitle(column.Key)">
                     @foreach (var property in column.Value)
                     {
-                        <DynamicFormRow Model="Model" Property="property" />
+                        <DynamicFormRow Model="Model" Property="property" Context="Context" />
                     }
                 </DynamicDisplayTemplateColumn>
             }
@@ -23,7 +23,7 @@ else if (Columns.Count == 1)
         <Rows>
             @foreach (var property in Columns.First().Value)
             {
-                <DynamicFormRow Model="Model" Property="property" />
+                <DynamicFormRow Model="Model" Property="property" Context="Context" />
             }
         </Rows>
     </DynamicDisplayTemplate>

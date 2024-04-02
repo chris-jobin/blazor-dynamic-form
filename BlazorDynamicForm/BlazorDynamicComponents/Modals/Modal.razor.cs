@@ -19,6 +19,9 @@ namespace BlazorDynamicComponents.Modals
         [Parameter]
         public string Header { get; set; }
 
+        [Parameter]
+        public EventCallback OnSave { get; set; }
+
         private bool IsOpen;
         private ElementReference DialogRef;
 

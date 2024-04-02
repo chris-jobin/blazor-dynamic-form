@@ -1,5 +1,6 @@
 ﻿using BlazorDynamicComponents.Attributes.Panel;
 using BlazorDynamicComponents.Modals;
+using BlazorDynamicComponents.Validation;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace BlazorDynamicComponents.Form
 
         [Parameter]
         public PropertyInfo Property { get; set; }
+
+        [Parameter]
+        public DynamicValidationContext Context { get; set; }
 
         private int GetLabelWidth()
         {

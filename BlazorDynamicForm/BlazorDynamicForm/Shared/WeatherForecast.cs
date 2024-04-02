@@ -1,4 +1,5 @@
 using BlazorDynamicComponents.Attributes.Panel;
+using BlazorDynamicComponents.Attributes.Validation;
 using BlazorDynamicComponents.Patterns;
 
 namespace BlazorDynamicForm.Shared
@@ -13,6 +14,7 @@ namespace BlazorDynamicForm.Shared
 
         [DynamicPanel("Summary", ColumnIndex = 1)]
         [DynamicForm(InputType.TextArea)]
+        [DynamicRequired(ErrorMessage = "Summary is required.")]
         public string Summary { get; set; }
 
         [DynamicPanel("Temp. C", ColumnIndex = 2)]

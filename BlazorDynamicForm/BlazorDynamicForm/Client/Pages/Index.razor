@@ -13,17 +13,23 @@ Welcome to your new app.
 <div class="row py-2">
     <div class="col-6">
         <DynamicPanelSourcedComponent TModel="WeatherForecast" Header="Weather Forecast" GetLocation="WeatherForecast/GetWeather" OnEdit="Edit" />
-        <Modal @ref="ModalRef" Header="Weather Forecast">
-            <DynamicFormSourcedComponent TModel="WeatherForecast" GetLocation="WeatherForecast/GetWeather" />
+        <Modal @ref="ModalRef" Header="Weather Forecast" OnSave="Validate">
+            <DynamicFormSourcedComponent @ref="FormRef" TModel="WeatherForecast" GetLocation="WeatherForecast/GetWeather" />
         </Modal>
     </div>
 </div>
 
 @code {
     private Modal ModalRef;
+    private DynamicFormSourcedComponent<WeatherForecast> FormRef;
 
     private async Task Edit()
     {
         await ModalRef.Open();
+    }
+
+    private void Validate()
+    {
+        var result = FormRef.Validate();
     }
 }

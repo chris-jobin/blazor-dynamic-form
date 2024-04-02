@@ -1,5 +1,6 @@
 ﻿using BlazorDynamicComponents.Attributes.Panel;
 using BlazorDynamicComponents.Patterns;
+using BlazorDynamicComponents.Validation;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace BlazorDynamicComponents.Form
         [Parameter]
         public TModel Model { get; set; }
 
+        private DynamicValidationContext Context;
         private Dictionary<int, List<PropertyInfo>> Columns;
 
         protected override void OnInitialized()
         {
             Columns = GetColumns();
+            Context = new DynamicValidationContext(Model);
         }
 
         private Dictionary<int, List<PropertyInfo>> GetColumns()
@@ -43,6 +46,13 @@ namespace BlazorDynamicComponents.Form
             var columnTitle = dynamicModel.Columns.TryGetValue(columnIndex, out var result) ? result : string.Empty;
 
             return columnTitle;
+        }
+
+        public bool Validate()
+        {
+            var isValid = Context.Validate();
+            StateHasChanged();
+            return isValid;
         }
     }
 }
